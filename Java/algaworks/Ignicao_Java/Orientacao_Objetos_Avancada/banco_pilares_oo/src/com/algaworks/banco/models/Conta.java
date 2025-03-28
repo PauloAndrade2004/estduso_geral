@@ -1,18 +1,16 @@
 package com.algaworks.banco.models;
 
-import java.util.Objects;
-
 public class Conta {
     private Pessoa titular;
     private int agencia;
     private int numero;
     private double saldo; // Removendo static para saldo ser individual por conta
 
-    public Conta(Pessoa titular, int agencia, int numero, double saldo) {
+    public Conta(Pessoa titular, int agencia, int numero) {
         this.titular = titular;
         this.agencia = agencia;
         this.numero = numero;
-        this.saldo = saldo;
+        //this.saldo = saldo;
     }
 
     //criando getters e setter
@@ -38,6 +36,10 @@ public class Conta {
 
     public void setSaldo() {
         this.saldo = saldo;
+    }
+
+    public Pessoa getTitular() {
+        return titular;
     }
 
     //criando so metodos
