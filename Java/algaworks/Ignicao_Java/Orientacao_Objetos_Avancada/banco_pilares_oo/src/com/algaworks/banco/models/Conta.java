@@ -6,40 +6,30 @@ public class Conta {
     private Pessoa titular;
     private int agencia;
     private int numero;
-    protected double saldo; // Removendo static para saldo ser individual por conta
+    private double saldo; // Removendo static para saldo ser individual por conta
 
-    //criando construtor
-    public Conta(Pessoa titular ,int agencia, int numero) {
-        Objects.requireNonNull(titular, "Titular não pode ser nulo");
+    public Conta(Pessoa titular, int agencia, int numero, double saldo) {
         this.titular = titular;
         this.agencia = agencia;
         this.numero = numero;
         this.saldo = saldo;
     }
 
-    //criando metodo de depositar
-    public void  despositar(double valor) {
-        if (valor < 0 ) {
-            throw new IllegalArgumentException("Valor do deposito tem que ser maior que zero");
-        }
-
-        this.saldo = saldo += valor;
-    }
-
-    public void sacar(double valor) {
-        if (valor <= saldo ) {
-            throw new IllegalArgumentException("Valor do saque deve ser menor ou igual ao saldo disponivel na conta");
-        }
-
-        this.saldo = saldo -= valor;
-    }
-
-    public int getAgencia() {
+    //criando getters e setter
+    public int agencia() {
         return agencia;
+    }
+
+    public void setAgencia() {
+        this.agencia = agencia;
     }
 
     public int getNumero() {
         return numero;
+    }
+
+    public void setNumero() {
+        this.numero = numero;
     }
 
     public double getSaldo() {
@@ -50,19 +40,33 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public Pessoa getTitular() {
-        return titular;
+    //criando so metodos
+
+    public void depositar(double valor) {
+        if (valor < 0 ) {
+            throw new IllegalArgumentException("Valor para deposito tem que ser maior que zero!");
+        } else if (valor > 0) {
+            System.out.println("Valor depositado com sucesso!");
+        }
+
+        this.saldo = saldo + valor;
     }
 
-    public void setTitular(Pessoa titular) {
-        this.titular = titular;
+    public void sacar(double valor) {
+        if (valor > saldo ) {
+            throw  new IllegalArgumentException("Valor do saque ultrapassou seu saldo disponivel ");
+        }else if (valor <= saldo ) {
+            System.out.println("Saque feito com sucesso!");
+        }
     }
 
     @Override
     public String toString() {
-        return "Conta " +
-                "agencia = " + agencia +
-                ", numero = " + numero +
-                ", saldo = " + saldo;
+        return "Conta{" +
+                "titular=" + titular +
+                ", agencia=" + agencia +
+                ", numero=" + numero +
+                ", saldo=" + saldo +
+                '}';
     }
 }

@@ -7,26 +7,18 @@ import java.util.Scanner;
 
 public class ContaInvestimento extends Conta{
 
-    Pessoa titular;
+    private int ano;
     private double juros;
-    private int anos;
 
-    //criando os construtor
-    public ContaInvestimento(Pessoa titular, int agencia, int numero, double juros, int anos) {
-        super(titular, agencia, numero); // Chama o construtor da classe Conta
+    public ContaInvestimento(Pessoa titular, int agencia, int numero, double saldo,double juros, int ano) {
+        super(titular, agencia, numero, saldo);
+        this.ano = ano;
         this.juros = juros;
-        this.anos = anos;
     }
 
-
-
-    //criando o metodo de aplicarInvestimentoselic
-    public double  tesouroDireto() {
-
-        double rendimento = getSaldo() * Math.pow(1 + juros, anos);
-        despositar(rendimento);
-        return rendimento;
-
+    //criando o metodo de investimento
+    public void tesouroDireto() {
+        double rendimento = getSaldo() * Math.pow(1 + juros, ano);
     }
 }
 

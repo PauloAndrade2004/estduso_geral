@@ -2,11 +2,9 @@ package com.algaworks.banco.models;
 
 public class Pessoa{
     protected String nome;
-    protected String documento;
+    private int  documento;
 
-
-    //Criando os métodos getters e setters
-
+    //criando o gatter e setters
     public String getNome() {
         return nome;
     }
@@ -15,22 +13,19 @@ public class Pessoa{
         this.nome = nome;
     }
 
-    public String getDocumento() {
+    public int getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public void setDocumento(int documento) {
         this.documento = documento;
     }
 
-
-    // Criando o método toString
-
+    //criando o metodo toString
     @Override
     public String toString() {
-        return "Pessoa " +
-                "nome = " + nome +
-                ", documento='" + documento ;
+        return "Nome: " + nome + "Documento: " + documento;
     }
+
 }
 
